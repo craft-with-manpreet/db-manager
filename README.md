@@ -2,7 +2,7 @@
 # Database Manager
 ## Installation
 
-DB Manager is built on [Python](https://www.python.org/) Version 3.12.3
+DB Manager is built on [Python](https://www.python.org/) Version 3.12.4
 
 To install dependencies use the following commands:
 
