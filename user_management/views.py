@@ -19,4 +19,4 @@ def login(request):
 
     # Generating session
     auth.login(request, user)
-    return redirect("dashboard")
+    return redirect("database-list")
