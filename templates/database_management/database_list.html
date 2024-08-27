@@ -69,8 +69,13 @@
                             <td class="border-bottom-0 d-flex justify-content-center gap-3">
                                 <a href="{% url 'update-database' object.id %}"
                                    title="Edit Database"><i class="fa fa-edit fa-xl"></i></a>
-                                <a href="{% url 'delete-database' object.id %}"
+                                <a
+                                   href="{% url 'delete-database' object.id %}"
                                    title="Delete Database"><i class="fa fa-trash fa-xl text-danger"></i></a>
+                                <a class="rounded-circle border border-dark bg-dark text-white"
+                                   href="{% url 'database-info' object.id %}"
+                                   title="Information & Logs">
+                                    <i class="fa fa-info fa-sm p-2"></i></a>
                             </td>
                         </tr>
                         {% endfor %}

@@ -27,7 +27,7 @@ class Database(models.Model):
 
 
 class DatabaseLog(models.Model):
-    database = models.ForeignKey(Database, on_delete=models.CASCADE)
+    database = models.ForeignKey(Database, on_delete=models.CASCADE, related_name="db_logs")
     title = models.TextField()
     description = models.TextField()
     status = models.CharField(max_length=20, choices=(
@@ -36,3 +36,6 @@ class DatabaseLog(models.Model):
         ("error", "Error")
     ))
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("-created_at",)

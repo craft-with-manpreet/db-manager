@@ -17,4 +17,7 @@ urlpatterns = [
 
     path('delete-database/<str:pk>', views.DatabaseDeleteView.as_view(
         template_name='database_management/delete_database.html'), name="delete-database"),
+
+    path('database-info/<str:pk>', views.DatabaseDeleteView.as_view(
+        template_name='database_management/database_info.html'), name="database-info"),
 ]
