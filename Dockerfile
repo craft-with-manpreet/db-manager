@@ -25,7 +25,6 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y \
     postgresql-client-16 \
-    postgresql \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a virtual environment
@@ -43,6 +42,10 @@ COPY . /app/
 
 # Set environment variables to use the virtual environment
 ENV PATH="/env/bin:$PATH"
+
+# Run Django management commands
+RUN /env/bin/python manage.py collectstatic --noinput
+RUN /env/bin/python manage.py migrate --noinput
 
 # Expose port 8000 for the Django application
 EXPOSE 8000
