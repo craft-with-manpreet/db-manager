@@ -111,12 +111,13 @@ class DatabaseInstance:
             backup_file = os.path.join(backup_dir, f'{database}_backup_{timestamp}.sql')
             process = subprocess.Popen(
                 ['pg_dump',
-                 '--dbname=postgresql://{}:{}@{}:{}/{}'.format(user, password, host, port, database),
+                 f'--dbname=postgresql://{user}:{password}@{host}:{port}/{database}',
                  '-Fc',
                  '-f', backup_file,
                  '-v'],
                 stdout=subprocess.PIPE
             )
+
             output = process.communicate()[0]
             if int(process.returncode) != 0:
                 print('Command failed. Return code : {}'.format(process.returncode))
