@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
+    'encrypted_model_fields',
 ]
 
 INSTALLED_APPS += [
-    'user_management'
+    'user_management',
+    'database_management'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+FIELD_ENCRYPTION_KEY = os.environ.get('DATABASE_ENCRYPTION_KEY', "0dxK1aNuVkH29htEsvBW0OyPYIm2p29n0hA17YcJnZg=")
