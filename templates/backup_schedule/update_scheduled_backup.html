@@ -12,20 +12,13 @@ Portfolio: https://dev-manpreet.web.app
         <div class="card w-100">
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">
-                    Edit Database
+                    Edit Scheduled Backup
                 </h5>
                 <div>
                     <form method="post">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-6">{{form.title | as_crispy_field}}</div>
-                            <div class="col-6">{{form.database_type | as_crispy_field}}</div>
-                            <div class="col-12">{{form.description | as_crispy_field}}</div>
-                            <div class="col-12 col-lg-6">{{form.host | as_crispy_field}}</div>
-                            <div class="col-12 col-lg-6">{{form.name | as_crispy_field}}</div>
-                            <div class="col-12 col-lg-6">{{form.user | as_crispy_field}}</div>
-                            <div class="col-12 col-lg-6">{{form.password | as_crispy_field}}</div>
-                            <div class="col-12">{{form.port | as_crispy_field}}</div>
+                            <div class="col-12">{{form.frequency | as_crispy_field}}</div>
                             <div class="col-12">{{form.is_active | as_crispy_field}}</div>
                         </div>
                         <div class="row">
@@ -34,7 +27,7 @@ Portfolio: https://dev-manpreet.web.app
                                         class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
                                     <i class="fa fa-save"></i> Save
                                 </button>
-                                <a href="{% url 'database-list' %}"
+                                <a href="{% url 'scheduled-backup-list' object.database.id %}"
                                    class="btn btn-dark d-flex justify-content-center align-items-center gap-1 border border-dark">
                                     Back
                                 </a>

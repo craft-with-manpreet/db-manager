@@ -43,7 +43,7 @@ class ScheduledBackupListView(generic.View):
         database = get_object_or_404(models.Database, id=database_id)
         objects = models.BackupSchedule.objects.filter(database=database)
         return render(request, "backup_schedule/scheduled_backup_list.html", {
-            "objects": objects
+            "object_list": objects
         })
 
 
@@ -57,7 +57,9 @@ class BackupScheduleCreateView(generic.View):
 
     def post(self, request, database_id):
         database = get_object_or_404(models.Database, id=database_id)
-        form = ScheduleBackupForm(data=request.data)
+        form = ScheduleBackupForm(data=request.POST, initial={
+            "database": database
+        })
         if not form.is_valid():
             return render(request, "backup_schedule/create_backup_schedule.html", {
                 "form": form
@@ -66,33 +68,37 @@ class BackupScheduleCreateView(generic.View):
         scheduled_backup: models.BackupSchedule = form.save()
         scheduled_backup.database = database
         scheduled_backup.save()
-        return redirect("scheduled-backups", database_id=database_id)
+        return redirect("scheduled-backup-list", database_id=database_id)
 
 
 class ScheduledBackupUpdateView(generic.View):
     def get(self, request, pk):
-        scheduled_backup = get_object_or_404(models.BackupSchedule, id=pk)
-        form: ScheduleBackupForm = ScheduleBackupForm(instance=scheduled_backup)
-        return render(request, "backup_schedule/update_backup_schedule.html", {
-            "form": form
+        instance = get_object_or_404(models.BackupSchedule, id=pk)
+        form: ScheduleBackupForm = ScheduleBackupForm(instance=instance)
+        return render(request, "backup_schedule/update_scheduled_backup.html", {
+            "form": form,
+            "object": instance
         })
 
     def post(self, request, pk):
         instance = get_object_or_404(models.BackupSchedule, id=pk)
-        form: ScheduleBackupForm = ScheduleBackupForm(data=request.data, instance=instance)
+        form: ScheduleBackupForm = ScheduleBackupForm(data=request.POST, instance=instance, initial={
+            "database": instance.database,
+        })
         if not form.is_valid():
-            return render(request, "backup_schedule/update_backup_schedule.html", {
-                "form": form
+            return render(request, "backup_schedule/update_scheduled_backup.html", {
+                "form": form,
+                "object": instance
             })
 
         form.save()
-        return redirect("scheduled-backups", database_id=instance.database.id)
+        return redirect("scheduled-backup-list", database_id=instance.database.id)
 
 
 class ScheduledBackupDeleteView(generic.View):
     def get(self, request, pk):
         instance = get_object_or_404(models.BackupSchedule, id=pk)
-        return render(request, "backup_schedule/delete_backup_schedule.html", {
+        return render(request, "backup_schedule/remove_scheduled_backup.html", {
             "object": instance
         })
 
@@ -100,4 +106,4 @@ class ScheduledBackupDeleteView(generic.View):
         instance = get_object_or_404(models.BackupSchedule, id=pk)
         database_id: str = instance.database.id
         instance.delete()
-        return redirect("scheduled-backups", database_id=database_id)
+        return redirect("scheduled-backup-list", database_id=database_id)

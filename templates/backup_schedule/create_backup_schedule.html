@@ -18,7 +18,7 @@ Portfolio: https://dev-manpreet.web.app
                     <form method="post">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-12">{{form.granularity | as_crispy_field}}</div>
+                            <div class="col-12">{{form.frequency | as_crispy_field}}</div>
                             <div class="col-12">{{form.is_active | as_crispy_field}}</div>
                         </div>
                         <div class="row">

@@ -16,3 +16,19 @@ class ScheduleBackupForm(forms.ModelForm):
     class Meta:
         model = models.BackupSchedule
         exclude = ("database",)
+
+    def clean(self):
+        super(ScheduleBackupForm, self).clean()
+        value = self.cleaned_data["frequency"]
+        database = self.initial["database"]
+        instance = self.instance
+        if instance:
+            if models.BackupSchedule.objects.filter(database=database, frequency=value).exclude(
+                    id=instance.id
+            ).exists():
+                raise forms.ValidationError({"frequency": ["Schedule already exists"]})
+        else:
+            if models.BackupSchedule.objects.filter(database=database, frequency=value).exists():
+                raise forms.ValidationError({"frequency": ["Schedule already exists"]})
+
+        return self.cleaned_data

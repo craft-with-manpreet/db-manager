@@ -12,27 +12,31 @@ Portfolio: https://dev-manpreet.web.app
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h5 class="card-title fw-semibold">
-                        Databases
+                        Backup Schedule
                     </h5>
-                    <a href="{% url 'create-database' %}" class="btn btn-primary btn-sm">
-                        Add Database
-                    </a>
+                    <div>
+                        <a href="{% url 'database-list' %}"
+                           class="btn btn-primary btn-sm">
+                            Back
+                        </a>
+                        <a href="{% url 'create-backup-schedule' request.resolver_match.kwargs.database_id  %}"
+                           class="btn btn-primary btn-sm">
+                            Add Backup Schedule
+                        </a>
+                    </div>
                 </div>
                 <div class="table table-bordered table-responsive">
                     <table class="table text-nowrap mb-0 align-middle text-center">
                         <thead class="text-dark fs-4">
                         <tr>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Title</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Type</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Created At</h6>
+                                <h6 class="fw-semibold mb-0">Frequency</h6>
                             </th>
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Status</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Created At</h6>
                             </th>
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Action</h6>
@@ -43,49 +47,31 @@ Portfolio: https://dev-manpreet.web.app
                         {% for object in object_list %}
                         <tr class="cursor-pointer">
                             <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-1 gap-2" title="{{object.title}}">
-                                    <span class="mr-2">{{object.title}}</span>
+                                <h6 class="fw-semibold mb-1 gap-2" title="{{object.get_frequency_display}}">
+                                    <span class="mr-2">{{object.get_frequency_display}}</span>
                                 </h6>
                             </td>
                             <td class="border-bottom-0">
-                                <h6 class="mb-1" title="{{object.get_database_type_display}}">
-                                    {{object.get_database_type_display}}
-                                </h6>
+                                {% if object.is_active %}
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <span class="badge bg-primary rounded-3 fw-semibold">Active</span>
+                                </div>
+                                {% else %}
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <span class="badge bg-danger rounded-3 fw-semibold">Inactive</span>
+                                </div>
+                                {% endif %}
                             </td>
                             <td class="border-bottom-0">
                                 <h6 class="mb-1" title="{{object.created_at}}">{{object.created_at}}</h6>
                             </td>
-                            <td class="border-bottom-0">
-                                {% if object.is_active %}
-                                {% if object.is_connected %}
-                                <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <span class="badge bg-success rounded-3 fw-semibold fa-xs p-2">Connected</span>
-                                </div>
-                                {% else %}
-                                <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <span class="badge bg-primary rounded-3 fw-semibold fa-xs p-2">Active</span>
-                                </div>
-                                {% endif %}
-                                {% else %}
-                                <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <span class="badge bg-danger rounded-3 fw-semibold fa-xs p-2">Inactive</span>
-                                </div>
-                                {% endif %}
-                            </td>
                             <td class="border-bottom-0 d-flex justify-content-center gap-3">
-                                <a href="{% url 'update-database' object.id %}"
+                                <a href="{% url 'update-scheduled-backup' object.id %}"
                                    title="Edit Database"><i class="fa fa-edit fa-xl"></i></a>
                                 <a
-                                        href="{% url 'delete-database' object.id %}"
-                                        title="Delete Database"><i class="fa fa-trash fa-xl text-danger"></i></a>
-                                <a class="rounded-circle border border-dark bg-dark text-white"
-                                   href="{% url 'database-info' object.id %}"
-                                   title="Information & Logs">
-                                    <i class="fa fa-info fa-sm p-2"></i></a>
-                                <a class="text-dark"
-                                   href="{% url 'database-info' object.id %}"
-                                   title="Backup Schedule">
-                                    <i class="fa fa-clock-o fa-xl"></i></a>
+                                        href="{% url 'remove-scheduled-backup' object.id %}"
+                                        title="Remove Scheduled Backup"><i
+                                        class="fa fa-trash fa-xl text-danger"></i></a>
                             </td>
                         </tr>
                         {% endfor %}

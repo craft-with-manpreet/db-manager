@@ -12,7 +12,7 @@ Portfolio: https://dev-manpreet.web.app
         <div class="card w-100">
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">
-                    Confirm to delete database?
+                    Confirm to remove backup schedule?
                 </h5>
                 <div>
                     <form method="post">
@@ -20,12 +20,15 @@ Portfolio: https://dev-manpreet.web.app
                         <div class="row mb-3">
                             <div class="col-12">
                                 <div class="text-primary"><strong>Database Details</strong></div>
-                                <div class="my-2"><strong>Title: </strong>{{object.title}}</div>
-                                <div class="my-2"><strong>Database Host: </strong>{{object.host}}</div>
-                                <div class="my-2"><strong>Database Name: </strong>{{object.name}}</div>
-                                <div class="mt-3 text-danger"><strong>Note:</strong> Doing this will not delete your
-                                    original database
-                                    but will delete only the saved database details and your database will not
+                                <div class="my-2"><strong>Title: </strong>{{object.database.title}}</div>
+                                <div class="my-2"><strong>Database Host: </strong>{{object.database.host}}</div>
+                                <div class="my-2"><strong>Database Name: </strong>{{object.database.name}}</div>
+                                <div class="my-2"><strong>Backup Frequency: </strong>{{object.get_frequency_display}}
+                                </div>
+                                <div class="mt-3 text-danger"><strong>Note:</strong>
+                                    Doing this will not delete your
+                                    original database or previous backup but will delete only the saved backup
+                                    schedule & your database will not
                                     be backed up further.
                                 </div>
                             </div>

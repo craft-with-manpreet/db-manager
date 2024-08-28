@@ -27,11 +27,11 @@ urlpatterns = [
         template_name='database_management/database_info.html'), name="database-info"),
 
     # Scheduled Backups
-    path('scheduled-backups',
+    path('scheduled-backups/<str:database_id>',
          views.ScheduledBackupListView.as_view(),
          name="scheduled-backup-list"),
 
-    path('create-backup-schedule', views.BackupScheduleCreateView.as_view(),
+    path('create-backup-schedule/<str:database_id>', views.BackupScheduleCreateView.as_view(),
          name="create-backup-schedule"),
 
     path('update-scheduled-backup/<str:pk>', views.ScheduledBackupUpdateView.as_view(),

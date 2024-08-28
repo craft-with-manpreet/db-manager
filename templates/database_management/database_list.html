@@ -59,16 +59,16 @@ Portfolio: https://dev-manpreet.web.app
                                 {% if object.is_active %}
                                 {% if object.is_connected %}
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <span class="badge bg-success rounded-3 fw-semibold fa-xs p-2">Connected</span>
+                                    <span class="badge bg-success rounded-3 fw-semibold">Connected</span>
                                 </div>
                                 {% else %}
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <span class="badge bg-primary rounded-3 fw-semibold fa-xs p-2">Active</span>
+                                    <span class="badge bg-primary rounded-3 fw-semibold">Active</span>
                                 </div>
                                 {% endif %}
                                 {% else %}
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <span class="badge bg-danger rounded-3 fw-semibold fa-xs p-2">Inactive</span>
+                                    <span class="badge bg-danger rounded-3 fw-semibold">Inactive</span>
                                 </div>
                                 {% endif %}
                             </td>
@@ -83,7 +83,7 @@ Portfolio: https://dev-manpreet.web.app
                                    title="Information & Logs">
                                     <i class="fa fa-info fa-sm p-2"></i></a>
                                 <a class="text-dark"
-                                   href="{% url 'database-info' object.id %}"
+                                   href="{% url 'scheduled-backup-list' object.id %}"
                                    title="Backup Schedule">
                                     <i class="fa fa-clock-o fa-xl"></i></a>
                             </td>

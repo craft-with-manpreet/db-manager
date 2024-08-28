@@ -46,9 +46,10 @@ class DatabaseLog(models.Model):
 
 
 class BackupSchedule(models.Model):
-    database = models.ForeignKey(Database, on_delete=models.CASCADE, related_name="backup_schedule")
-    granularity = models.CharField(choices=(
-        ("hourly", "hourly"),
+    database = models.ForeignKey(Database, on_delete=models.CASCADE,
+                                 related_name="backup_schedule", default=None, null=True)
+    frequency = models.CharField(choices=(
+        ("hourly", "Hourly"),
         ("everyday", "Everyday"),
         ("weekly", "Weekly"),
         ("monthly", "Monthly"),
@@ -58,5 +59,5 @@ class BackupSchedule(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ("database", "granularity",)
+        unique_together = ("database", "frequency",)
         ordering = ("-created_at",)
