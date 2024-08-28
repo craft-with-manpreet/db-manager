@@ -59,7 +59,7 @@ class DatabaseInstance:
 
         return False
 
-    def create_my_sql_backup(self):
+    def create_my_sql_backup(self) -> bool:
         connection = self.connect()
         if not connection:
             return False
@@ -70,8 +70,10 @@ class DatabaseInstance:
         password = database_object.password
         database = database_object.name
         port = database_object.port
-        backup_dir = '.'
-        timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+
+        timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M')
+        backup_dir = f'backups/{database_object.title}/backup/{timestamp}/'
+        os.makedirs(backup_dir)
         backup_file = os.path.join(backup_dir, f'{database}_backup_{timestamp}.sql')
 
         # Construct mysqldump command
@@ -102,7 +104,7 @@ class DatabaseInstance:
 
         return False
 
-    def create_pg_backup(self):
+    def create_pg_backup(self) -> bool:
         try:
             database_object = self.get_database_object()
             host = database_object.host
@@ -110,8 +112,9 @@ class DatabaseInstance:
             password = database_object.password
             database = database_object.name
             port = database_object.port
-            backup_dir = '.'
             timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+            backup_dir = f'backups/{database_object.title}/backup/{timestamp}/'
+            os.makedirs(backup_dir)
             backup_file = os.path.join(backup_dir, f'{database}_backup_{timestamp}.sql')
             process = subprocess.Popen(
                 ['pg_dump',
@@ -121,11 +124,23 @@ class DatabaseInstance:
                  '-v'],
                 stdout=subprocess.PIPE
             )
-
-            output = process.communicate()[0]
             if int(process.returncode) != 0:
                 print('Command failed. Return code : {}'.format(process.returncode))
                 exit(1)
-            return output
+            return True
         except Exception as e:
             print(e)
+            return False
+
+    def backup(self) -> bool:
+        if self.database_type == "mysql":
+            response = self.create_my_sql_backup()
+        else:
+            response = self.create_pg_backup()
+        return response
+
+
+def func_backup_database(pk) -> bool:
+    db_instance = DatabaseInstance(pk)
+    response = db_instance.backup()
+    return response

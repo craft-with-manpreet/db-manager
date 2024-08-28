@@ -17,21 +17,21 @@ job_defaults = {
 }
 
 
-def get_trigger(granularity, interval):
-    if granularity == 'seconds':
+def get_trigger(frequency, interval=1):
+    if frequency == 'seconds':
         return IntervalTrigger(seconds=interval)
-    elif granularity == 'minutes':
+    elif frequency == 'minutes':
         return IntervalTrigger(minutes=interval)
-    elif granularity == 'hours':
+    elif frequency == 'hourly':
         return IntervalTrigger(hours=interval)
-    elif granularity == 'days':
+    elif frequency == 'everyday':
         return CronTrigger(day_of_week='*', hour=0, minute=0, second=0)  # Daily at midnight
-    elif granularity == 'months':
+    elif frequency == 'monthly':
         return CronTrigger(day=1, hour=0, minute=0, second=0)  # Monthly on the 1st at midnight
-    elif granularity == 'years':
+    elif frequency == 'yearly':
         return CronTrigger(month=1, day=1, hour=0, minute=0, second=0)  # Yearly on January 1st at midnight
     else:
-        raise ValueError("Invalid granularity")
+        raise ValueError("Invalid frequency")
 
 
 scheduler_instance = BackgroundScheduler(jobstores=job_stores, job_defaults=job_defaults)

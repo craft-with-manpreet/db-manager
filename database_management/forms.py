@@ -15,7 +15,7 @@ class DatabaseForm(forms.ModelForm):
 class ScheduleBackupForm(forms.ModelForm):
     class Meta:
         model = models.BackupSchedule
-        exclude = ("database",)
+        exclude = ("id", "database",)
 
     def clean(self):
         super(ScheduleBackupForm, self).clean()
