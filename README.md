@@ -35,15 +35,13 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-To initialize your database with the default required data run the below
-command, It's mandatory to execute the below command for a smooth
-experience while running your project.
+#### Create super-user using below command
 
 ```sh
-python manage.py init
+python manage.py createsuperuser
 ```
 
-Finally, you can try running your server,
+After creating the super-user. Finally, you can try running your server with the following command
 
 ```sh
 python manage.py runserver
