@@ -66,6 +66,26 @@ docker compose build
 docker compose up
 ```
 
+<br>
+
+### Sample Database Details
+
+#### Postgres
+
+- **Host:** pg-a974fbd-db-manager.h.aivencloud.com
+- **Name:** pagila
+- **User:** avnadmin
+- **Password:** AVNS_46E_2sLim7Pahvnbzpx
+- **Port:** 22906
+
+#### MySQL
+
+- **Host:** mysql-2d0b84d6-db-manager.h.aivencloud.com
+- **Name:** defaultdb
+- **User:** avnadmin
+- **Password:** AVNS_MDHboaEuN37kByz4xZC
+- **Port:** 22906
+
 [localhost]: <http://localhost:8000>
 
 [GTK]: <https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases>
