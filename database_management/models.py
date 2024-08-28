@@ -1,3 +1,7 @@
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
 import uuid
 
 from django.db import models
@@ -38,4 +42,21 @@ class DatabaseLog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        ordering = ("-created_at",)
+
+
+class BackupSchedule(models.Model):
+    database = models.ForeignKey(Database, on_delete=models.CASCADE, related_name="backup_schedule")
+    granularity = models.CharField(choices=(
+        ("hourly", "hourly"),
+        ("everyday", "Everyday"),
+        ("weekly", "Weekly"),
+        ("monthly", "Monthly"),
+        ("yearly", "Yearly"),
+    ), max_length=10)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("database", "granularity",)
         ordering = ("-created_at",)

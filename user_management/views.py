@@ -1,7 +1,13 @@
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
 from user_management.forms import LoginForm
 from typing import Type
+from database_management.scheduler import scheduler_instance, get_trigger
 
 
 def login(request):

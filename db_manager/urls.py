@@ -1,3 +1,7 @@
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
 """
 URL configuration for db_manager project.
 
@@ -27,4 +31,3 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
