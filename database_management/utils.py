@@ -9,6 +9,7 @@ from database_management.models import Database, DatabaseLog
 from typing import Type
 from mysql import connector as mysql_connector
 import os
+import psycopg2
 
 
 class DatabaseInstance:
@@ -49,6 +50,31 @@ class DatabaseInstance:
                                            status="failed")
                 print("Connection to the database failed")
                 return False
+            except Exception as e:
+                print(f"Connection Error: 0001, \n {e}, \n {traceback.format_exc()}")
+                DatabaseLog.objects.create(database_id=self.database_id,
+                                           title=f"Connection Error: 0001 - {e}",
+                                           description=f"{traceback.format_exc()}",
+                                           status="error")
+                return False
+
+        elif self.database_type == "postgres":
+            try:
+                conn = psycopg2.connect(
+                    dbname=database_object.name,
+                    user=database_object.user,
+                    password=database_object.password,
+                    host=database_object.host,
+                    port=database_object.port
+                )
+                DatabaseLog.objects.create(database_id=self.database_id,
+                                           title=f"Connection successful",
+                                           description=f"Connection to the database have been successfully made",
+                                           status="success")
+                database_object.is_connected = True
+                database_object.save()
+                conn.close()
+                return True
             except Exception as e:
                 print(f"Connection Error: 0001, \n {e}, \n {traceback.format_exc()}")
                 DatabaseLog.objects.create(database_id=self.database_id,
@@ -105,6 +131,10 @@ class DatabaseInstance:
         return False
 
     def create_pg_backup(self) -> bool:
+        connection = self.connect()
+        if not connection:
+            return False
+
         try:
             database_object = self.get_database_object()
             host = database_object.host
