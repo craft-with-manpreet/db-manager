@@ -1,5 +1,7 @@
 # Database Manager
 
+![alt text](https://repository-images.githubusercontent.com/846434854/fda81a33-739b-4a98-a294-c5cace6a204f)
+
 ## Installation
 
 DB Manager is built on [Python](https://www.python.org/) Version 3.12.4
