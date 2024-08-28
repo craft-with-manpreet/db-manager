@@ -6,8 +6,6 @@ DB Manager is built on [Python](https://www.python.org/) Version 3.12.4
 
 To install dependencies use the following commands:
 
-### Windows:
-
 ```sh
 python -m venv venv
 ```
@@ -45,6 +43,27 @@ After creating the super-user. Finally, you can try running your server with the
 
 ```sh
 python manage.py runserver
+```
+
+### Docker Installation
+
+This project uses Docker to manage a PostgreSQL database and a web application with Gunicorn and Django.
+
+#### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- Docker
+- Docker Compose
+
+#### Commands
+
+```sh
+docker compose build
+```
+
+```sh
+docker compose up
 ```
 
 [localhost]: <http://localhost:8000>
