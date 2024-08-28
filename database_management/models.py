@@ -46,6 +46,7 @@ class DatabaseLog(models.Model):
 
 
 class BackupSchedule(models.Model):
+    id = models.TextField(default=uuid.uuid4, primary_key=True)
     database = models.ForeignKey(Database, on_delete=models.CASCADE,
                                  related_name="backup_schedule", default=None, null=True)
     frequency = models.CharField(choices=(
