@@ -1,0 +1,85 @@
+<!--
+Author: Manpreet Singh
+Email: dev.manpreet.io@gmail.com
+GitHub: https://github.com/craft-with-manpreet
+Portfolio: https://dev-manpreet.web.app
+-->
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h5 class="card-title fw-semibold">
+                        Backup Schedule
+                    </h5>
+                    <div>
+                        <a href="{% url 'database-list' %}"
+                           class="btn btn-primary btn-sm">
+                            Back
+                        </a>
+                        <a href="{% url 'create-backup-schedule' request.resolver_match.kwargs.database_id  %}"
+                           class="btn btn-primary btn-sm">
+                            Add Backup Schedule
+                        </a>
+                    </div>
+                </div>
+                <div class="table table-bordered table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle text-center">
+                        <thead class="text-dark fs-4">
+                        <tr>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Frequency</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Status</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Created At</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Action</h6>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for object in object_list %}
+                        <tr class="cursor-pointer">
+                            <td class="border-bottom-0">
+                                <h6 class="fw-semibold mb-1 gap-2" title="{{object.get_frequency_display}}">
+                                    <span class="mr-2">{{object.get_frequency_display}}</span>
+                                </h6>
+                            </td>
+                            <td class="border-bottom-0">
+                                {% if object.is_active %}
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <span class="badge bg-primary rounded-3 fw-semibold">Active</span>
+                                </div>
+                                {% else %}
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <span class="badge bg-danger rounded-3 fw-semibold">Inactive</span>
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td class="border-bottom-0">
+                                <h6 class="mb-1" title="{{object.created_at}}">{{object.created_at}}</h6>
+                            </td>
+                            <td class="border-bottom-0 d-flex justify-content-center gap-3">
+                                <a href="{% url 'update-scheduled-backup' object.id %}"
+                                   title="Edit Database"><i class="fa fa-edit fa-xl"></i></a>
+                                <a
+                                        href="{% url 'remove-scheduled-backup' object.id %}"
+                                        title="Remove Scheduled Backup"><i
+                                        class="fa fa-trash fa-xl text-danger"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -38,7 +38,15 @@
       "Divendres",
       "Dissabte"
     ],
-    "shortDays": ["Dg", "Dl", "Dt", "Dc", "Dj", "Dv", "Ds"],
+    "shortDays": [
+      "Dg",
+      "Dl",
+      "Dt",
+      "Dc",
+      "Dj",
+      "Dv",
+      "Ds"
+    ],
     "toolbar": {
       "exportToSVG": "Descarregar SVG",
       "exportToPNG": "Descarregar PNG",

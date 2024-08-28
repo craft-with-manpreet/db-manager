@@ -1,0 +1,42 @@
+<!--
+Author: Manpreet Singh
+Email: dev.manpreet.io@gmail.com
+GitHub: https://github.com/craft-with-manpreet
+Portfolio: https://dev-manpreet.web.app
+-->
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+    <div class="col-12 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">
+                    Add Backup Schedule
+                </h5>
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">{{form.frequency | as_crispy_field}}</div>
+                            <div class="col-12">{{form.is_active | as_crispy_field}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex gap-2">
+                                <button type="submit"
+                                        class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                                    <i class="fa fa-save"></i> Save
+                                </button>
+                                <a href="{% url 'scheduled-backup-list' request.resolver_match.kwargs.database_id %}"
+                                   class="btn btn-dark d-flex justify-content-center align-items-center gap-1 border border-dark">
+                                    Back
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -27,8 +27,8 @@
 ## Browsers support
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/> Edge | [<img src="https://user-images.githubusercontent.com/17712401/124668393-30772d00-de87-11eb-9360-3199c3b68b95.png" alt="IE" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/> IE11 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 31+ ✔                                                                                                                                                                                                             | 35+ ✔                                                                                                                                                                                                         | 6+ ✔                                                                                                                                                                                                          | Edge ✔                                                                                                                                                                                                 | [(IE11)](#using-it-with-ie11) ✔                                                                                                                                                                  |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 31+ ✔                                                                                                                                                                                                             | 35+ ✔                                                                                                                                                                                                         | 6+ ✔                                                                                                                                                                                                          | Edge ✔                                                                                                                                                                                                 | [(IE11)](#using-it-with-ie11) ✔                                                                                                                                                                                       |
 
 ## Download and Installation
 
@@ -60,9 +60,9 @@ Useful links to wrappers other than the popular frameworks mentioned above
 - [apexcharter](https://github.com/dreamRs/apexcharter) - Htmlwidget for ApexCharts
 - [apexcharts.rb](https://github.com/styd/apexcharts.rb) - Ruby wrapper for ApexCharts
 - [larapex-charts](https://github.com/ArielMejiaDev/larapex-charts) - Laravel wrapper for ApexCharts
-- [blazor-apexcharts](https://github.com/apexcharts/Blazor-ApexCharts) - Blazor wrapper for ApexCharts [demo](https://apexcharts.github.io/Blazor-ApexCharts/)
+- [blazor-apexcharts](https://github.com/apexcharts/Blazor-ApexCharts) - Blazor wrapper for
+  ApexCharts [demo](https://apexcharts.github.io/Blazor-ApexCharts/)
 - [svelte-apexcharts](https://github.com/galkatz373/svelte-apexcharts) - Svelte wrapper for ApexCharts
-
 
 ## Usage
 
@@ -119,53 +119,69 @@ An example of loading dynamic series into charts is shown below
 
 ## Annotations
 
-Annotations allows you to write custom text on specific values or on axes values. Valuable to expand the visual appeal of your chart and make it more informative.
+Annotations allows you to write custom text on specific values or on axes values. Valuable to expand the visual appeal
+of your chart and make it more informative.
 
 <p align="center"><a href="https://apexcharts.com/docs/annotations/"><img src="https://apexcharts.com/media/annotations.png" alt="annotations" /></a></p>
 
 ## Mixed Charts
 
-You can combine more than one chart type to create a combo/mixed chart. Possible combinations can be line/area/column together in a single chart. Each chart-type can have it's own y-axis.
+You can combine more than one chart type to create a combo/mixed chart. Possible combinations can be line/area/column
+together in a single chart. Each chart-type can have it's own y-axis.
 
 <p align="center"><a href="https://apexcharts.com/javascript-chart-demos/mixed-charts/"><img src="https://apexcharts.com/wp-content/uploads/2018/05/line-column-area-mixed-chart.svg" alt="annotations" width="490" /></a></p>
 
 ## Candlestick
 
-Use a candlestick chart (a common financial chart) to describe price changes of a security, derivative, or currency. Below image show how you can use another chart as a brush/preview-pane which acts as a handle to browse the main candlestick chart.
+Use a candlestick chart (a common financial chart) to describe price changes of a security, derivative, or currency.
+Below image show how you can use another chart as a brush/preview-pane which acts as a handle to browse the main
+candlestick chart.
 
 <p align="center"><a href="https://apexcharts.com/javascript-chart-demos/candlestick-charts/"><img src="https://apexcharts.com/media/candlestick.png" alt="candlestick" width="490" /></a></p>
 
 ## Heatmaps
 
-Use Heatmaps to represent data through colors and shades. Frequently used with bigger data collections, they are valuable for recognizing patterns and area of focus.
+Use Heatmaps to represent data through colors and shades. Frequently used with bigger data collections, they are
+valuable for recognizing patterns and area of focus.
 
 <p align="center"><a href="https://apexcharts.com/javascript-chart-demos/heatmap-charts/"><img src="https://apexcharts.com/media/heatmap-charts.png" alt="heatmap" /></a></p>
 
 ## Gauges
 
-The tiny gauges are an important part of a dashboard and are useful in displaying single series data. A demo of these gauges:
+The tiny gauges are an important part of a dashboard and are useful in displaying single series data. A demo of these
+gauges:
 
 <p align="center"><a href="https://apexcharts.com/javascript-chart-demos/radialbar-charts/"><img src="https://apexcharts.com/media/radialbars-gauges.png" width="490" alt="radialbar-chart" /></a></p>
 
 ## Sparklines
 
-Utilize sparklines to indicate trends in data, for example, occasional increments or declines, monetary cycles, or to feature most extreme and least values:
+Utilize sparklines to indicate trends in data, for example, occasional increments or declines, monetary cycles, or to
+feature most extreme and least values:
 
 <p align="center"><a href="https://apexcharts.com/javascript-chart-demos/sparklines/"><img src="https://apexcharts.com/media/sparklines.png" alt="sparkline-chart" /></a></p>
 
+## Need Advanced Data Grid for your next project?
 
-## Need Advanced Data Grid for your next project? 
-We partnered with Infragistics, creators of the fastest data grids on the planet! Ignite UI Grids can handle unlimited rows and columns of data, while providing access to custom templates and real-time data updates. 
+We partnered with Infragistics, creators of the fastest data grids on the planet! Ignite UI Grids can handle unlimited
+rows and columns of data, while providing access to custom templates and real-time data updates.
 
 <p align="center"><a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid" target="_blank"><img src="https://apexcharts.com/media/infragistics-data-grid.png" /></a></p>
 
-Featuring an intuitive API for easy theming and branding, you can quickly bind to data with minimal hand-on coding. The grid is available in most of your favorite frameworks:  
+Featuring an intuitive API for easy theming and branding, you can quickly bind to data with minimal hand-on coding. The
+grid is available in most of your favorite frameworks:
 
-<a target="_blank" href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid">Angular Data Grid</a> | <a target="_blank" href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids">React Data Grid</a> | <a target="_blank" href="https://www.infragistics.com/products/ignite-ui-blazor/blazor/components/data-grid">Blazor Data Grid</a> | <a target="_blank" href="https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/data-grid">Web Components DataGrid</a> | <a target="_blank" href="https://www.igniteui.com/grid/overview">jQuery Data Grid </a>
+<a target="_blank" href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid">Angular
+Data Grid</a> | <a target="_blank" href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids">
+React Data
+Grid</a> | <a target="_blank" href="https://www.infragistics.com/products/ignite-ui-blazor/blazor/components/data-grid">
+Blazor Data
+Grid</a> | <a target="_blank" href="https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/data-grid">
+Web Components DataGrid</a> | <a target="_blank" href="https://www.igniteui.com/grid/overview">jQuery Data Grid </a>
 
 ## What's included
 
-The download bundle includes the following files and directories providing a minified single file in the dist folder. Every asset including icon/css is bundled in the js itself to avoid loading multiple files.
+The download bundle includes the following files and directories providing a minified single file in the dist folder.
+Every asset including icon/css is bundled in the js itself to avoid loading multiple files.
 
 ```
 apexcharts/
@@ -187,7 +203,8 @@ If you need to make it work with IE11, you need to include these polyfills befor
 - [promise-polyfill](https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js)
 - [classlist.js](https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill)
 - [ResizeObserver polyfill](https://cdn.jsdelivr.net/npm/@juggle/resize-observer)
-- [findIndex](https://cdn.jsdelivr.net/npm/findindex_polyfill_mdn) - You will need this only if you require timeline/rangebar charts
+- [findIndex](https://cdn.jsdelivr.net/npm/findindex_polyfill_mdn) - You will need this only if you require
+  timeline/rangebar charts
 - [canvg](https://unpkg.com/canvg@3.0.4/lib/umd.js) - You will need this only if you require PNG download of your charts
 
 ## Development
@@ -199,7 +216,8 @@ npm install
 npm run dev
 ```
 
-This will start the webpack watch and any changes you make to `src` folder will auto-compile and output will be produced in the `dist` folder.
+This will start the webpack watch and any changes you make to `src` folder will auto-compile and output will be produced
+in the `dist` folder.
 
 #### Minifying the src
 
@@ -209,7 +227,8 @@ npm run build
 
 ## Where do I go next?
 
-Head over to the <a href="https://apexcharts.com/docs/">documentation</a> section to read more about how to use different kinds of charts and explore all options.
+Head over to the <a href="https://apexcharts.com/docs/">documentation</a> section to read more about how to use
+different kinds of charts and explore all options.
 
 ## Contacts
 
@@ -221,8 +240,11 @@ Facebook: <a href="https://facebook.com/apexcharts">fb.com/apexcharts</a>
 
 ## Dependency
 
-ApexCharts uses <a href="https://svgdotjs.github.io/" target="_blank">SVG.js</a> for drawing shapes, animations, applying svg filters and a lot more under the hood. The library is bundled in the final build file, so you don't need to include it.
+ApexCharts uses <a href="https://svgdotjs.github.io/" target="_blank">SVG.js</a> for drawing shapes, animations,
+applying svg filters and a lot more under the hood. The library is bundled in the final build file, so you don't need to
+include it.
 
 ## License
 
-ApexCharts is released under MIT license. You are free to use, modify and distribute this software, as long as the copyright header is left intact.
+ApexCharts is released under MIT license. You are free to use, modify and distribute this software, as long as the
+copyright header is left intact.

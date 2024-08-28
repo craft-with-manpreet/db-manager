@@ -1,3 +1,7 @@
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
 import uuid
 
 from django.db import models
@@ -27,7 +31,7 @@ class Database(models.Model):
 
 
 class DatabaseLog(models.Model):
-    database = models.ForeignKey(Database, on_delete=models.CASCADE)
+    database = models.ForeignKey(Database, on_delete=models.CASCADE, related_name="db_logs")
     title = models.TextField()
     description = models.TextField()
     status = models.CharField(max_length=20, choices=(
@@ -36,3 +40,24 @@ class DatabaseLog(models.Model):
         ("error", "Error")
     ))
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("-created_at",)
+
+
+class BackupSchedule(models.Model):
+    database = models.ForeignKey(Database, on_delete=models.CASCADE,
+                                 related_name="backup_schedule", default=None, null=True)
+    frequency = models.CharField(choices=(
+        ("hourly", "Hourly"),
+        ("everyday", "Everyday"),
+        ("weekly", "Weekly"),
+        ("monthly", "Monthly"),
+        ("yearly", "Yearly"),
+    ), max_length=10)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("database", "frequency",)
+        ordering = ("-created_at",)

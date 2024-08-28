@@ -1,3 +1,7 @@
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
 """
 Django settings for db_manager project.
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'encrypted_model_fields',
+    'apscheduler'
 ]
 
 INSTALLED_APPS += [
@@ -91,6 +96,7 @@ if os.getenv("DATABASE_TYPE") == "postgres":
             'PORT': os.getenv('DATABASE_PORT'),
         }
     }
+    SQLALCHEMY_DATABASE_URI = f"postgresql://{DATABASES['default']['USER']}:{DATABASES['default']['PASSWORD']}@{DATABASES['default']['HOST']}:{DATABASES['default']['PORT']}/{DATABASES['default']['NAME']}"
 else:
     print("NOTE :- You have not specified your database credentials, This will work but can be harmful & may have "
           "security breaches")
@@ -100,6 +106,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

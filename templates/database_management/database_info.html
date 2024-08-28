@@ -1,0 +1,43 @@
+<!--
+Author: Manpreet Singh
+Email: dev.manpreet.io@gmail.com
+GitHub: https://github.com/craft-with-manpreet
+Portfolio: https://dev-manpreet.web.app
+-->
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+    <div class="col-12 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="mb-4 d-flex justify-content-between align-items-center">
+                    <h5 class="card-title fw-semibold">Database Information & Logs</h5>
+                    <a class="btn btn-primary btn-sm" href="{% url 'database-list' %}">Back</a>
+                </div>
+                <div>
+                    <ul>
+                        {% for data in object.db_logs.all %}
+                        <li>
+                            <h6 class="d-flex gap-2 align-items-center">
+                                {% if data.status == "success" %}
+                                <i class="fa fa-check text-success fa-xl"></i>
+                                {% elif data.status == "failed" %}
+                                <i class="fa fa-exclamation-circle text-warning fa-xl"></i>
+                                {% else %}
+                                <i class="fa fa-times text-danger fa-xl"></i>
+                                {% endif %}
+                                <span><strong>{{data.title}}</strong></span>
+                            </h6>
+                            <p>{{data.description}}</p>
+                            <p class="fa-sm my-4"> ~ <strong>{{data.created_at}}</strong></p>
+                        </li>
+                        <hr>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

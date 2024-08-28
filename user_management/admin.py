@@ -1,3 +1,6 @@
-from django.contrib import admin
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
 
-# Register your models here.
+from django.contrib import admin

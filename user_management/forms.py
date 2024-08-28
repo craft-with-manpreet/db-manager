@@ -1,3 +1,7 @@
+# Author: Manpreet Singh
+# Email: dev.manpreet.io@gmail.com
+# GitHub: https://github.com/craft-with-manpreet
+# Portfolio: https://dev-manpreet.web.app
 from django import forms
 from django.contrib.auth.models import auth
 
