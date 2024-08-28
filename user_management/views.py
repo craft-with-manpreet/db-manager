@@ -26,3 +26,8 @@ def login(request):
     # Generating session
     auth.login(request, user)
     return redirect("database-list")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("login")
