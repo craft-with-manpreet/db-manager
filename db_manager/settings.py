@@ -14,6 +14,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+import urllib.parse
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -96,7 +97,8 @@ if os.getenv("DATABASE_TYPE") == "postgres":
             'PORT': os.getenv('DATABASE_PORT'),
         }
     }
-    SQLALCHEMY_DATABASE_URI = f"postgresql://{DATABASES['default']['USER']}:{DATABASES['default']['PASSWORD']}@{DATABASES['default']['HOST']}:{DATABASES['default']['PORT']}/{DATABASES['default']['NAME']}"
+    db_password = urllib.parse.quote(DATABASES['default']['PASSWORD'])
+    SQLALCHEMY_DATABASE_URI = f"postgresql://{DATABASES['default']['USER']}:{db_password}@{DATABASES['default']['HOST']}:{DATABASES['default']['PORT']}/{DATABASES['default']['NAME']}"
 else:
     print("NOTE :- You have not specified your database credentials, This will work but can be harmful & may have "
           "security breaches")

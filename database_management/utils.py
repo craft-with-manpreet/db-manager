@@ -5,6 +5,8 @@
 import traceback
 import subprocess
 import datetime
+import urllib.parse
+
 from database_management.models import Database, DatabaseLog
 from typing import Type
 from mysql import connector as mysql_connector
@@ -93,7 +95,7 @@ class DatabaseInstance:
         database_object = self.get_database_object()
         host = database_object.host
         user = database_object.user
-        password = database_object.password
+        password = urllib.parse.quote(database_object.password)
         database = database_object.name
         port = database_object.port
 
@@ -139,7 +141,7 @@ class DatabaseInstance:
             database_object = self.get_database_object()
             host = database_object.host
             user = database_object.user
-            password = database_object.password
+            password = urllib.parse.quote(database_object.password)
             database = database_object.name
             port = database_object.port
             timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
